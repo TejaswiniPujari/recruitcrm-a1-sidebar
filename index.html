@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Assignment1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <button
+        id="themeToggle"
+        class="toggle"
+        type="button"
+        aria-pressed="false"
+        title="Toggle theme"
+      >
+        <span id="themeLabel">Light</span>
+        <span
+          class="indicator"
+          id="indicator"
+          data-state="light"
+          aria-hidden="true"
+          ><span class="dot"></span
+        ></span>
+      </button>
+    </div>
+    <div class="fixed-bar">
+      <div id="top-menu"></div>
+      <div id="bottom-menu"></div>
+    </div>
+    <div class="sidebar collapsed hide-side-bar" id="sidebar">
+      <div id="dashboard-menu" class="sub-menu-icon"></div>
+      <div id="tasks-menu" class="sub-menu-icon"></div>
+      <div id="settings-menu" class="sub-menu-icon"></div>
+      <div id="profile-menu" class="sub-menu-icon"></div>
+    </div>
+    <div class="sidebar1 hide-side-bar" id="sidebar1" style="display: none">
+      <div class="menu-title">
+        <div id="selected-menu">Dashboard</div>
+        <div class="toggle-btn" onclick="toggleSidebar()" id="toggle-btn">
+          <i class="arrow right" id="selected-menu-arrow"></i>
+        </div>
+      </div>
+      <div class="input-field">
+        <i class="fa-solid fa-magnifying-glass fa-icon search-icon"></i>
+        <input type="text" placeholder="Search..." onchange="searchInList()"  id="search-value"/>
+      </div>
+      <div id="dashboard-menu1" class="sub-menu-list"></div>
+      <div id="tasks-menu1" class="sub-menu-list"></div>
+      <div id="settings-menu1" class="sub-menu-list"></div>
+      <div id="profile-menu1" class="sub-menu-list"></div>
+    </div>
+    <div class="container">
+      <div id="RevenueOverview">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+        odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+        quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+        mauris.
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="main.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>
