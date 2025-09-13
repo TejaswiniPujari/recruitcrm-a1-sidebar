@@ -198,7 +198,7 @@ function setSubMenu() {
   });
 }
 
-let dashboardSubMenuWithTabName = [
+const dashboardSubMenuWithTabName = [
   [
     {
       icon: "fa-solid fa-eye fa-icon",
@@ -252,7 +252,6 @@ let dashboardSubMenuWithTabName = [
     },
   ],
 ];
-
 const tasksSubMenuWithTabName = [
   [
     {
@@ -337,6 +336,10 @@ const settingsSubMenuWithTabName = [
     },
   ],
 ];
+let dashboardSubMenuWithTabName1 = dashboardSubMenuWithTabName;
+let tasksSubMenuWithTabName1 = tasksSubMenuWithTabName;
+let profileSubMenuWithTabName1 = profileSubMenuWithTabName;
+let settingsSubMenuWithTabName1 = settingsSubMenuWithTabName;
 
 // toggle siderbar1
 function openHideSubList(id) {
@@ -348,9 +351,10 @@ function openHideSubList(id) {
   $(`#${id}arrow`).toggleClass("up");
 }
 
-function setSubMenuList() {
+function setDashboardSubMenu() {
   // ====dashboard=====
-  dashboardSubMenuWithTabName?.forEach((list) => {
+  $("#dashboard-menu1").empty();
+  dashboardSubMenuWithTabName1?.forEach((list) => {
     $("#dashboard-menu1").append(
       '<div class="menu-type">' + list[0].type + "</div>"
     );
@@ -366,7 +370,7 @@ function setSubMenuList() {
             item.icon +
             '"></i><div class="sub-menu-title">' +
             item.name +
-            '</div><i class="arrow down" id="' +
+            '</div><i class="arrow1 down" id="' +
             item.key +
             'arrow"></i></div>'
         );
@@ -397,9 +401,11 @@ function setSubMenuList() {
       }
     });
   });
-
+}
+function setTaskMenuList() {
   //   ====tasks=====
-  tasksSubMenuWithTabName?.forEach((list) => {
+  $("#tasks-menu1").empty();
+  tasksSubMenuWithTabName1?.forEach((list) => {
     $("#tasks-menu1").append(
       '<div class="menu-type">' + list[0].type + "</div>"
     );
@@ -415,7 +421,7 @@ function setSubMenuList() {
             item.icon +
             '"></i><div class="sub-menu-title">' +
             item.name +
-            '</div><i class="arrow down" id="' +
+            '</div><i class="arrow1 down" id="' +
             item.key +
             'arrow"></i></div>'
         );
@@ -446,9 +452,12 @@ function setSubMenuList() {
       }
     });
   });
+}
 
+function setProfileMenuList() {
   //   ====profile=====
-  profileSubMenuWithTabName?.forEach((list) => {
+  $("#profile-menu1").empty();
+  profileSubMenuWithTabName1?.forEach((list) => {
     $("#profile-menu1").append(
       '<div class="menu-type">' + list[0].type + "</div>"
     );
@@ -464,7 +473,7 @@ function setSubMenuList() {
             item.icon +
             '"></i><div class="sub-menu-title">' +
             item.name +
-            '</div><i class="arrow down" id="' +
+            '</div><i class="arrow1 down" id="' +
             item.key +
             'arrow"></i></div>'
         );
@@ -495,9 +504,11 @@ function setSubMenuList() {
       }
     });
   });
-
-  //   ====profile=====
-  settingsSubMenuWithTabName?.forEach((list) => {
+}
+function setSettingMenuList() {
+  //   ====setting=====
+  $("#settings-menu1").empty();
+  settingsSubMenuWithTabName1?.forEach((list) => {
     $("#settings-menu1").append(
       '<div class="menu-type">' + list[0].type + "</div>"
     );
@@ -513,7 +524,7 @@ function setSubMenuList() {
             item.icon +
             '"></i><div class="sub-menu-title">' +
             item.name +
-            '</div><i class="arrow down" id="' +
+            '</div><i class="arrow1 down" id="' +
             item.key +
             'arrow"></i></div>'
         );
@@ -550,7 +561,21 @@ function setSubMenuList() {
 function changeMenuList(selectedTab, title) {
   document.getElementById("selected-menu").innerHTML = title;
   selectedMenu = selectedTab;
+  $("#search-value").val("");
 
+  if (title == "Dashboard") {
+    dashboardSubMenuWithTabName1 = dashboardSubMenuWithTabName;
+    setDashboardSubMenu();
+  } else if (title == "Tasks") {
+    tasksSubMenuWithTabName1 = tasksSubMenuWithTabName;
+    setTaskMenuList();
+  } else if (title == "Settings") {
+    settingsSubMenuWithTabName1 = settingsSubMenuWithTabName;
+    setSettingMenuList();
+  } else if (title == "Profile") {
+    profileSubMenuWithTabName1 = profileSubMenuWithTabName;
+    setProfileMenuList();
+  }
   if (isMobile()) {
     document.getElementById("sidebar").classList.remove("hide-side-bar");
     document.getElementById("sidebar1").classList.remove("hide-side-bar");
@@ -594,7 +619,11 @@ function goto(tab) {
 document.addEventListener("DOMContentLoaded", function () {
   setMainMenu();
   setSubMenu();
-  setSubMenuList();
+  setDashboardSubMenu();
+  setTaskMenuList();
+  setProfileMenuList();
+  setSettingMenuList();
+
   //   display dashboard menu default
   const elementsToHide = document.querySelectorAll(".sub-menu-icon");
   elementsToHide.forEach((element) => {
@@ -611,17 +640,43 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function searchInList(e) {
-  console.log("called");
   const TabName = $("#selected-menu").text();
   const searched = $("#search-value").val();
-  console.log(TabName, searched);
-  let x = dashboardSubMenuWithTabName.map((item) => {
-    const y = item.filter((tab) =>
-      tab.name.toLocaleLowerCase().includes(searched)
-    );
-    console.log(y);
-    return y.length > 0 ? y : null;
-  });
-  console.log(x.filter(Boolean));
-  dashboardSubMenuWithTabName = x.filter(Boolean);
+  if (TabName == "Dashboard") {
+    let x = dashboardSubMenuWithTabName.map((item) => {
+      const y = item.filter((tab) =>
+        tab.name.toLocaleLowerCase().includes(searched)
+      );
+      return y.length > 0 ? y : null;
+    });
+    dashboardSubMenuWithTabName1 = x.filter(Boolean);
+    setDashboardSubMenu();
+  } else if (TabName == "Tasks") {
+    let x = tasksSubMenuWithTabName.map((item) => {
+      const y = item.filter((tab) =>
+        tab.name.toLocaleLowerCase().includes(searched)
+      );
+      return y.length > 0 ? y : null;
+    });
+    tasksSubMenuWithTabName1 = x.filter(Boolean);
+    setTaskMenuList();
+  } else if (TabName == "Settings") {
+    let x = settingsSubMenuWithTabName.map((item) => {
+      const y = item.filter((tab) =>
+        tab.name.toLocaleLowerCase().includes(searched)
+      );
+      return y.length > 0 ? y : null;
+    });
+    settingsSubMenuWithTabName1 = x.filter(Boolean);
+    setSettingMenuList();
+  } else if (TabName == "Profile") {
+    let x = profileSubMenuWithTabName.map((item) => {
+      const y = item.filter((tab) =>
+        tab.name.toLocaleLowerCase().includes(searched)
+      );
+      return y.length > 0 ? y : null;
+    });
+    profileSubMenuWithTabName1 = x.filter(Boolean);
+    setProfileMenuList();
+  }
 }

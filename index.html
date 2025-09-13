@@ -2,7 +2,10 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
     <title>Sidebar Assignment1</title>
     <link
       rel="stylesheet"
@@ -50,7 +53,12 @@
       </div>
       <div class="input-field">
         <i class="fa-solid fa-magnifying-glass fa-icon search-icon"></i>
-        <input type="text" placeholder="Search..." onchange="searchInList()"  id="search-value"/>
+        <input
+          type="text"
+          placeholder="Search..."
+          oninput="searchInList()"
+          id="search-value"
+        />
       </div>
       <div id="dashboard-menu1" class="sub-menu-list"></div>
       <div id="tasks-menu1" class="sub-menu-list"></div>

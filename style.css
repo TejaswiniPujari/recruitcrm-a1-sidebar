@@ -33,6 +33,14 @@ body {
     padding: 0.25rem;
 }
 
+.arrow1 {
+    border: solid var(--text);
+    border-width: 0 0.2rem 0.2rem 0;
+    display: inline-block;
+    padding: 0.5rem;
+    scale: 0.6;
+}
+
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
@@ -201,6 +209,15 @@ input:focus {
     display: flex;
     padding: 0.5rem 1rem;
     gap: 0.5rem;
+    border-radius: 0.5rem;
+    width: 95%;
+    box-sizing: border-box;
+    margin: 0 auto 0.1rem;
+}
+
+.single-menu:hover {
+    background: var(--muted);
+    cursor: pointer;
 }
 
 .menu-name {
@@ -216,6 +233,15 @@ input:focus {
     gap: 0.5rem;
     justify-content: center;
     padding: 0.5rem 1rem;
+    width: 95%;
+    margin: 0 auto 0.1rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+}
+
+.sub-menu-list-title:hover {
+    background: var(--muted);
+    cursor: pointer;
 }
 
 .sub-menu-title {
@@ -227,13 +253,20 @@ input:focus {
 }
 
 .sub-tab-name {
-    width: 11rem;
+    width: 12rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     display: flex;
     padding: 0.5rem;
     margin-left: 2.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.1rem;
+}
+
+.sub-tab-name:hover {
+    background: var(--muted);
+    cursor: pointer;
 }
 
 .container {
@@ -248,7 +281,8 @@ input:focus {
     background-color: var(--screenbg);
     box-sizing: border-box;
 }
-.company-logo{
+
+.company-logo {
     opacity: 1;
 }
 
