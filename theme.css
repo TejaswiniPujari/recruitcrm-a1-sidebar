@@ -33,7 +33,7 @@
         border-radius: 999px;
         position: relative;
         border: 1px solid var(--text);
-        background: var(--bg);
+        background: var(--screenbg);
     }
 
     .dot {
